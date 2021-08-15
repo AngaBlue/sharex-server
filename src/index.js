@@ -95,7 +95,7 @@ class Server {
             try {
                 await fs.writeFile(this._folder + this._path + string + (type === "gif" ? ".gif" : ".png"), req.files.image.data);
                 res.writeHead(200, { "Content-Type": "application/json" });
-                return res.end(JSON.stringify({ URL: `${req.connection.encrypted ? "https://" : "http://"}${this._host}/${string}.${type}` }));
+                return res.end(JSON.stringify({ URL: `https://${this._host}/${string}.${type}` }));
             } catch (err) {
                 return res.status(500).end("Something went wrong, try again later.");
             }
